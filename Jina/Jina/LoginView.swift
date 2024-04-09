@@ -12,6 +12,7 @@ struct LoginView: View {
     @State private var password = ""
     @State var showingAlert = false
     @State var loginError: Error?
+    @Binding var entryType: EntryType
     
     var body: some View {
         VStack(spacing: 0) {
@@ -32,6 +33,8 @@ struct LoginView: View {
             }
             InputField(text: $email, placeholder: "Email")
                 .padding(.bottom, 16)
+                .autocapitalization(.none)
+
             HStack {
                 Text("Password")
                     .padding(.bottom, 12)
@@ -44,7 +47,7 @@ struct LoginView: View {
             HStack {
                 Text("Don't have an account?")
                 Button {
-                    
+                    entryType = .signUp
                 } label: {
                     Text("SIGN UP")
                         .font(.system(size: 17, weight: .bold))

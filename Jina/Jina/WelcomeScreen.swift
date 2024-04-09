@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WelcomeScreen: View {
     @State var showBottomSheet = false
+    @State var entryType: EntryType = .signIn
     var body: some View {
         ZStack {
             Image("WelcomeScreenImage")
@@ -22,11 +23,17 @@ struct WelcomeScreen: View {
                     showBottomSheet.toggle()
                 }
                 .sheet(isPresented: $showBottomSheet) {
-                    RegistrationView()
-                        .padding()
-                        .presentationDetents([.medium])
-                        .presentationDetents([.height(600)])
-                    
+                    if(entryType == .signIn) {
+                        LoginView(entryType: $entryType)
+                            .padding()
+                            .presentationDetents([.medium])
+                    }
+                    else {
+                        RegistrationView(entryType: $entryType)
+                            .padding()
+                            .presentationDetents([.medium])
+                            .presentationDetents([.height(600)])
+                    }
                 }
             }
             .padding()

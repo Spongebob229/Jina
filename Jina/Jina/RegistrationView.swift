@@ -14,6 +14,7 @@ struct RegistrationView: View {
     @State private var password = ""
     @State var showingAlert = false
     @State var loginError: Error?
+    @Binding var entryType: EntryType
     
     var body: some View {
         ScrollView {
@@ -54,6 +55,8 @@ struct RegistrationView: View {
                 }
                 InputField(text: $email, placeholder: "Your email")
                     .padding(.bottom, 16)
+                    .autocapitalization(.none)
+
                 
                 HStack {
                     Text("Password")
@@ -68,7 +71,7 @@ struct RegistrationView: View {
                 HStack {
                     Text("Already have an account?")
                     Button {
-                        
+                        entryType = .signIn
                     } label: {
                         Text("LOG IN")
                             .font(.system(size: 17, weight: .bold))
