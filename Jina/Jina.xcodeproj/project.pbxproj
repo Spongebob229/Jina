@@ -47,6 +47,8 @@
 		0A178A662BC4532A0076CE0A /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A178A652BC4532A0076CE0A /* InputField.swift */; };
 		0A178A682BC592700076CE0A /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A178A672BC592700076CE0A /* RegistrationView.swift */; };
 		0A178A6A2BC5B3A00076CE0A /* EntryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A178A692BC5B3A00076CE0A /* EntryType.swift */; };
+		0A178A6C2BC5B83F0076CE0A /* PostElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A178A6B2BC5B83F0076CE0A /* PostElement.swift */; };
+		0A6BBEE12BC6E86A004A3431 /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6BBEE02BC6E86A004A3431 /* PostList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +66,8 @@
 		0A178A652BC4532A0076CE0A /* InputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
 		0A178A672BC592700076CE0A /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		0A178A692BC5B3A00076CE0A /* EntryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryType.swift; sourceTree = "<group>"; };
+		0A178A6B2BC5B83F0076CE0A /* PostElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostElement.swift; sourceTree = "<group>"; };
+		0A6BBEE02BC6E86A004A3431 /* PostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,11 +128,13 @@
 			isa = PBXGroup;
 			children = (
 				0A178A122BC30D480076CE0A /* JinaApp.swift */,
+				0A6BBEE02BC6E86A004A3431 /* PostList.swift */,
 				0A178A592BC320E40076CE0A /* AuthService.swift */,
 				0A178A142BC30D480076CE0A /* ContentView.swift */,
 				0A178A5B2BC430720076CE0A /* WelcomeScreen.swift */,
 				0A178A692BC5B3A00076CE0A /* EntryType.swift */,
 				0A178A632BC435720076CE0A /* LoginView.swift */,
+				0A178A6B2BC5B83F0076CE0A /* PostElement.swift */,
 				0A178A672BC592700076CE0A /* RegistrationView.swift */,
 				0A178A652BC4532A0076CE0A /* InputField.swift */,
 				0A178A5F2BC432AF0076CE0A /* MainTitle.swift */,
@@ -254,9 +260,11 @@
 				0A178A5A2BC320E40076CE0A /* AuthService.swift in Sources */,
 				0A178A642BC435720076CE0A /* LoginView.swift in Sources */,
 				0A178A152BC30D480076CE0A /* ContentView.swift in Sources */,
+				0A178A6C2BC5B83F0076CE0A /* PostElement.swift in Sources */,
 				0A178A682BC592700076CE0A /* RegistrationView.swift in Sources */,
 				0A178A6A2BC5B3A00076CE0A /* EntryType.swift in Sources */,
 				0A178A5C2BC430720076CE0A /* WelcomeScreen.swift in Sources */,
+				0A6BBEE12BC6E86A004A3431 /* PostList.swift in Sources */,
 				0A178A132BC30D480076CE0A /* JinaApp.swift in Sources */,
 				0A178A5E2BC431380076CE0A /* MainButton.swift in Sources */,
 				0A178A602BC432AF0076CE0A /* MainTitle.swift in Sources */,

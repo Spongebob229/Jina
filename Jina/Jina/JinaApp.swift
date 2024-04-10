@@ -16,7 +16,8 @@ struct JinaApp: App {
     
     var body: some Scene {
         WindowGroup {
-            WelcomeScreen()
+            PostList()
+          
         }
     }
 }
