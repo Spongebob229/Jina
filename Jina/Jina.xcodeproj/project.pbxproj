@@ -11,6 +11,7 @@
 		0A178A152BC30D480076CE0A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A178A142BC30D480076CE0A /* ContentView.swift */; };
 		0A178A172BC30D4B0076CE0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A178A162BC30D4B0076CE0A /* Assets.xcassets */; };
 		0A178A1A2BC30D4B0076CE0A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A178A192BC30D4B0076CE0A /* Preview Assets.xcassets */; };
+		53ADB97D2BC5909C001CF786 /* CreateOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53ADB97C2BC5909C001CF786 /* CreateOrderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		0A178A142BC30D480076CE0A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0A178A162BC30D4B0076CE0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A178A192BC30D4B0076CE0A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		53ADB97C2BC5909C001CF786 /* CreateOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				0A178A122BC30D480076CE0A /* JinaApp.swift */,
 				0A178A142BC30D480076CE0A /* ContentView.swift */,
+				53ADB97C2BC5909C001CF786 /* CreateOrderView.swift */,
 				0A178A162BC30D4B0076CE0A /* Assets.xcassets */,
 				0A178A182BC30D4B0076CE0A /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A178A152BC30D480076CE0A /* ContentView.swift in Sources */,
+				53ADB97D2BC5909C001CF786 /* CreateOrderView.swift in Sources */,
 				0A178A132BC30D480076CE0A /* JinaApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

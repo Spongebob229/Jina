@@ -11,7 +11,7 @@ import SwiftUI
 struct JinaApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            CreateOrderView()
         }
     }
 }
