@@ -6,19 +6,43 @@
 //
 
 import SwiftUI
+import Firebase
 
 struct ContentView: View {
-    var body: some View {
+    @State var email: String = ""
+    @State var password: String = ""
+    @State var showingAlert = false
+    @State var loginError: Error?
+    
+    var body: some View{
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Hello")
+            TextField("Email", text: $email)
+            TextField("Pass", text: $password)
+            
+            Button {
+                Task {
+                    do {
+                        try await AuthService.shared.signUpUser(with:email, password: password)
+                    } catch {
+                        loginError = error
+                        showingAlert.toggle()
+                    }
+                    
+                }
+                
+            } label: {
+                Text("SignUp")
+            }
+            .alert(loginError?.localizedDescription ?? "Auth error!", isPresented: $showingAlert) {
+                Button("OK", role: .cancel) { }
+            }
+
+            
         }
-        .padding()
     }
 }
 
 #Preview {
-    ContentView()
+    ContentView(email: "", password: "")
 }

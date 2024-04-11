@@ -28,14 +28,19 @@ struct CreateOrderView: View {
            }
            .onChange(of: avatarItem) {
                Task {
-                   if let loaded = try? await avatarItem?.loadTransferable(type: Image.self) {
-                       avatarImage = loaded
+                   if let imageData = try? await avatarItem?.loadTransferable(type: Data.self),
+                      let uiImage = UIImage(data: imageData) {
+                       avatarImage = Image(uiImage: uiImage)
+
+                       
                    } else {
                        print("Failed")
                    }
                }
            }
        }
+
+
 }
 
 #Preview {
