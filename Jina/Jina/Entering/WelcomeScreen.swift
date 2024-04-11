@@ -10,37 +10,50 @@ import SwiftUI
 struct WelcomeScreen: View {
     @State var showBottomSheet = false
     @State var entryType: EntryType = .signIn
+    @State var showContentView: Bool = false
+    
     var body: some View {
-        ZStack {
-            Image("WelcomeScreenImage")
-                .resizable()
-                .ignoresSafeArea()
-            
-            VStack(spacing: 0){
-                MainTitle(title: "Welcome to Jina", color: Color.white)
-                Spacer()
-                MainButton(title: "Continue") {
-                    showBottomSheet.toggle()
-                }
-                .sheet(isPresented: $showBottomSheet) {
-                    if(entryType == .signIn) {
-                        LoginView(entryType: $entryType)
-                            .padding()
-                            .presentationDetents([.medium])
+        NavigationStack {
+            ZStack {
+                Image("WelcomeScreenImage")
+                    .resizable()
+                    .ignoresSafeArea()
+                
+                VStack(spacing: 0){
+                    MainTitle(title: "Welcome to Jina", color: Color.white)
+                    Spacer()
+                    MainButton(title: "Continue") {
+                        showBottomSheet.toggle()
                     }
-                    else {
-                        RegistrationView(entryType: $entryType)
-                            .padding()
-                            .presentationDetents([.medium])
-                            .presentationDetents([.height(600)])
+                    .sheet(isPresented: $showBottomSheet) {
+                        if(entryType == .signIn) {
+                            LoginView(showContentView: $showContentView, entryType: $entryType)
+                                .padding()
+                                .presentationDetents([.medium])
+                        }
+                        else {
+                            RegistrationView(showContentView: $showContentView, entryType: $entryType)
+                                .padding()
+                                .presentationDetents([.medium])
+                                .presentationDetents([.height(600)])
+                        }
                     }
                 }
+                .padding()
             }
-            .padding()
+            
+            NavigationLink(isActive: $showContentView) {
+                ContentView()
+                    .onAppear{
+                        showBottomSheet = false
+                    }
+                    .navigationBarBackButtonHidden(true)
+                
+            }
+            label: {
+                EmptyView()
+            }
+            
         }
     }
-}
-
-#Preview {
-    WelcomeScreen()
 }
