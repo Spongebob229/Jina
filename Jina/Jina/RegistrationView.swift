@@ -90,6 +90,11 @@ struct RegistrationView: View {
             Task {
                 do {
                     try await AuthService.shared.signUpUser(with: email, password: password)
+                    
+                    let id = AuthService.shared.currentUser?.user.uid
+                    let userModel = UserModel(id: id ?? "", name: name, surname: surname)
+
+                    try DatabaseService.shared.createUserDocument(user: userModel)
                     print("Signed up")
                 } catch {
                     loginError = error
