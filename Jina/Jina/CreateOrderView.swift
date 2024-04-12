@@ -60,7 +60,6 @@ struct CreateOrderView: View {
                       let uiImage = UIImage(data: imageData) {
                        trashImage = Image(uiImage: uiImage)
                        self.imageData = uiImage.jpegData(compressionQuality: 0.3)
-
                    } else {
                        print("Failed")
                    }
