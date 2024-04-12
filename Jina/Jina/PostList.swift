@@ -16,7 +16,9 @@ struct PostList: View {
                 }
             }
             .background(Color.textField)
+            
         }
+        .padding(.top, 1)
     }
 }
 
