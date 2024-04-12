@@ -8,9 +8,10 @@
 import Foundation
 
 struct TrashModel: Codable {
+    let id: String
     let author: String
     let image: String
-    let adress: String
+    let address: String
     let description: String
     let status: String
     let stars: Int

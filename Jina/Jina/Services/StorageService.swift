@@ -25,10 +25,6 @@ struct StorageService {
     }
 
     func uploadImage(_ imageData: Data, name: String) {
-        let metadata = StorageMetadata()
-        metadata.contentType = "image/jpeg"
-
-        let imageRef = imagesReference.child("images/\(name)")
-        imageRef.putData(imageData)
+        imagesReference.child("images/\(name)").putData(imageData)
     }
 }

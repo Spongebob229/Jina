@@ -13,7 +13,11 @@ final class AuthService {
     
     private var auth = Auth.auth()
     private(set) var currentUser: AuthDataResult?
-    
+
+    var user: User? {
+        auth.currentUser
+    }
+
     private init() {}
     
     func signUpUser(with email: String, password: String) async throws {
