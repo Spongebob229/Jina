@@ -40,7 +40,7 @@ struct CreateOrderView: View {
                            let userModel = try await DatabaseService.shared.getCurrentUserModel()
                            let trashModel = TrashModel(id: id,
                                                        author: userModel.name + " " + userModel.surname,
-                                                       image: id,
+                                                       imageId: id,
                                                        address: address,
                                                        description: description,
                                                        status: "Open",
@@ -56,18 +56,16 @@ struct CreateOrderView: View {
            .padding(.horizontal, 16)
            .onChange(of: trashItem) {
                Task {
-                   if let imageData = try? await trashItem?.loadTransferable(type: Data.self),
-                      let uiImage = UIImage(data: imageData) {
+                   if let data = try? await trashItem?.loadTransferable(type: Data.self),
+                      let uiImage = UIImage(data: data) {
                        trashImage = Image(uiImage: uiImage)
-                       self.imageData = uiImage.jpegData(compressionQuality: 0.3)
+                       imageData = uiImage.jpegData(compressionQuality: 0.3)
                    } else {
                        print("Failed")
                    }
                }
            }
        }
-
-
 }
 
 #Preview {

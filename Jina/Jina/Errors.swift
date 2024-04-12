@@ -7,6 +7,7 @@
 
 import Foundation
 
-enum NetworkError: Error {
+enum Errors: Error {
     case userIdError
+    case fetchPictureError
 }

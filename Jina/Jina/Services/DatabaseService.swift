@@ -33,7 +33,7 @@ final class DatabaseService {
     }
 
     func getCurrentUserModel() async throws -> UserModel {
-        guard let id = AuthService.shared.user?.uid else { throw NetworkError.userIdError }
+        guard let id = AuthService.shared.user?.uid else { throw Errors.userIdError }
 
         return try await usersCollectionReference.document(id).getDocument(as: UserModel.self)
     }

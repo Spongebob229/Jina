@@ -54,7 +54,7 @@
 		53F58A4A2BC83787001AFCA8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F58A492BC83787001AFCA8 /* UserModel.swift */; };
 		53F58A4E2BC83D75001AFCA8 /* TrashModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F58A4D2BC83D75001AFCA8 /* TrashModel.swift */; };
 		53F58A502BC83EF9001AFCA8 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F58A4F2BC83EF9001AFCA8 /* StorageService.swift */; };
-		53F58A522BC86B0C001AFCA8 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F58A512BC86B0C001AFCA8 /* NetworkError.swift */; };
+		53F58A522BC86B0C001AFCA8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F58A512BC86B0C001AFCA8 /* Errors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,7 +79,7 @@
 		53F58A492BC83787001AFCA8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		53F58A4D2BC83D75001AFCA8 /* TrashModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashModel.swift; sourceTree = "<group>"; };
 		53F58A4F2BC83EF9001AFCA8 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
-		53F58A512BC86B0C001AFCA8 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		53F58A512BC86B0C001AFCA8 /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,7 +141,7 @@
 			children = (
 				0A178A122BC30D480076CE0A /* JinaApp.swift */,
 				0A6BBEE02BC6E86A004A3431 /* PostList.swift */,
-				53F58A512BC86B0C001AFCA8 /* NetworkError.swift */,
+				53F58A512BC86B0C001AFCA8 /* Errors.swift */,
 				53F58A492BC83787001AFCA8 /* UserModel.swift */,
 				53F58A4D2BC83D75001AFCA8 /* TrashModel.swift */,
 				53F58A482BC8370F001AFCA8 /* Services */,
@@ -298,7 +298,7 @@
 				53F58A502BC83EF9001AFCA8 /* StorageService.swift in Sources */,
 				0A178A602BC432AF0076CE0A /* MainTitle.swift in Sources */,
 				53F58A4A2BC83787001AFCA8 /* UserModel.swift in Sources */,
-				53F58A522BC86B0C001AFCA8 /* NetworkError.swift in Sources */,
+				53F58A522BC86B0C001AFCA8 /* Errors.swift in Sources */,
 				53F58A4E2BC83D75001AFCA8 /* TrashModel.swift in Sources */,
 				0A178A662BC4532A0076CE0A /* InputField.swift in Sources */,
 			);
