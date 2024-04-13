@@ -27,4 +27,8 @@ final class AuthService {
     func signInUser(with email: String, password: String) async throws {
         currentUser = try await auth.signIn(withEmail: email, password: password)
     }
+
+    func logout() throws {
+        try auth.signOut()
+    }
 }

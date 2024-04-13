@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct TrashModel: Codable {
+struct TrashModel: Codable, Identifiable {
     let id: String
     let author: String
-    let imageId: String
+    let image: String
     let address: String
     let description: String
     let status: String

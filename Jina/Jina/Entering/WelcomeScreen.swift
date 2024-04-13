@@ -23,7 +23,7 @@ struct WelcomeScreen: View {
                     MainTitle(title: "Welcome to Jina", color: Color.white)
                     Spacer()
                     MainButton(title: "Continue") {
-                        showBottomSheet.toggle()
+                        AuthService.shared.user != nil ? showContentView.toggle() : showBottomSheet.toggle()
                     }
                     .sheet(isPresented: $showBottomSheet) {
                         if(entryType == .signIn) {
@@ -34,8 +34,7 @@ struct WelcomeScreen: View {
                         else {
                             RegistrationView(showContentView: $showContentView, entryType: $entryType)
                                 .padding()
-                                .presentationDetents([.medium])
-                                .presentationDetents([.height(600)])
+                                .presentationDetents([.medium, .height(600)])
                         }
                     }
                 }

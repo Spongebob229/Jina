@@ -6,34 +6,44 @@
 //
 
 import SwiftUI
+import SDWebImage
 
 struct PostElement: View {
+    @Binding var model: TrashModel
+    @State var url: URL?
+    var onTakeButtonPressed: (() -> Void)
+
     var body: some View {
         VStack(spacing: 16) {
             HStack {
-                Text("Тимон Пумбович")
+                Text(model.author)
                     .padding(.leading, 16)
                     .font(.system(size: 17, weight: .semibold))
                 Spacer()
                 
-                Text("100 ⭐️")
+                Text("\(model.stars) ⭐️")
                     .padding(.trailing, 16)
                     .font(.system(size: 17, weight: .semibold))
             }
             .padding(.top, 16)
             
             HStack(spacing: 0) {
-                Image("Kaka")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 200, height: 150)
-                    .cornerRadius(8)
-                
+                AsyncImage(url: url) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 200, height: 150)
+                        .cornerRadius(8)
+                } placeholder: {
+                    ProgressView()
+                        .frame(width: 200, height: 150)
+                }
+
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("📌 Орбита 1, Дом 3, Квартира 107, переулок 10")
+                    Text("📌 \(model.address)")
                         .font(.system(size: 14))
                     
-                    Text("📃 Эу джиги нада убраться а то чего грязно)")
+                    Text("📃 \(model.description)")
                         .font(.system(size: 14))
                     
                     Spacer()
@@ -46,18 +56,36 @@ struct PostElement: View {
             .frame(height: 150)
             
             MainButton(title: "Take it") {
-                
+                onTakeButtonPressed()
             }
             .padding(.horizontal, 16)
             .padding(.bottom, 16)
         }
         .background(Color.white)
         .cornerRadius(8)
-        
+        .onAppear {
+            Task {
+                do {
+                    url = try await StorageService.shared.imageURL(for: model.image)
+                } catch {
+                    print(error.localizedDescription)
+                }
+
+            }
+        }
     }
 }
 
-
 #Preview {
-    PostElement()
+    PostElement(
+        model: .constant(
+            TrashModel(id: "",
+                       author: "",
+                       image: "",
+                       address: "",
+                       description: "",
+                       status: "",
+                       stars: 0)
+        ), onTakeButtonPressed: {}
+    )
 }
