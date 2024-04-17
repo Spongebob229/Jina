@@ -9,10 +9,12 @@ import SwiftUI
 import SDWebImage
 
 struct PostElement: View {
-    @Binding var model: TrashModel
+    let model: TrashModel
     @State var url: URL?
-    var onTakeButtonPressed: (() -> Void)
-
+    
+    let buttonTitle: String
+    var onButtonPressed: (() -> Void)
+    
     var body: some View {
         VStack(spacing: 16) {
             HStack {
@@ -55,8 +57,8 @@ struct PostElement: View {
             .padding(.horizontal, 16)
             .frame(height: 150)
             
-            MainButton(title: "Take it") {
-                onTakeButtonPressed()
+            MainButton(title: buttonTitle) {
+                onButtonPressed()
             }
             .padding(.horizontal, 16)
             .padding(.bottom, 16)
@@ -74,18 +76,4 @@ struct PostElement: View {
             }
         }
     }
-}
-
-#Preview {
-    PostElement(
-        model: .constant(
-            TrashModel(id: "",
-                       author: "",
-                       image: "",
-                       address: "",
-                       description: "",
-                       status: "",
-                       stars: 0)
-        ), onTakeButtonPressed: {}
-    )
 }

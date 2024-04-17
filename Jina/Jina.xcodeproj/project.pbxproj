@@ -51,6 +51,11 @@
 		0A6BBEE12BC6E86A004A3431 /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6BBEE02BC6E86A004A3431 /* PostList.swift */; };
 		0A6BBEE32BC85310004A3431 /* PostCreationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6BBEE22BC85310004A3431 /* PostCreationScreen.swift */; };
 		0A6BBEE52BC85E30004A3431 /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6BBEE42BC85E30004A3431 /* ProfileScreen.swift */; };
+		0A830A3D2BCCF84D0013216B /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A830A3C2BCCF84D0013216B /* ImagePicker.swift */; };
+		0A830A412BCD04D30013216B /* ImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A830A402BCD04D30013216B /* ImageSize.swift */; };
+		0A830A432BCD243E0013216B /* StatisticsPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A830A422BCD243E0013216B /* StatisticsPanel.swift */; };
+		0A830A452BCD26160013216B /* Stripe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A830A442BCD26160013216B /* Stripe.swift */; };
+		0AA301DE2BCBE54F0010679D /* Capture in Frameworks */ = {isa = PBXBuildFile; productRef = 0AA301DD2BCBE54F0010679D /* Capture */; };
 		53F58A472BC83668001AFCA8 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F58A462BC83668001AFCA8 /* DatabaseService.swift */; };
 		53F58A4A2BC83787001AFCA8 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F58A492BC83787001AFCA8 /* UserModel.swift */; };
 		53F58A4E2BC83D75001AFCA8 /* TrashModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F58A4D2BC83D75001AFCA8 /* TrashModel.swift */; };
@@ -78,6 +83,11 @@
 		0A6BBEE02BC6E86A004A3431 /* PostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostList.swift; sourceTree = "<group>"; };
 		0A6BBEE22BC85310004A3431 /* PostCreationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCreationScreen.swift; sourceTree = "<group>"; };
 		0A6BBEE42BC85E30004A3431 /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		0A830A3C2BCCF84D0013216B /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		0A830A402BCD04D30013216B /* ImageSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSize.swift; sourceTree = "<group>"; };
+		0A830A422BCD243E0013216B /* StatisticsPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsPanel.swift; sourceTree = "<group>"; };
+		0A830A442BCD26160013216B /* Stripe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stripe.swift; sourceTree = "<group>"; };
+		0AA301DF2BCBEC000010679D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		53F58A462BC83668001AFCA8 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		53F58A492BC83787001AFCA8 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		53F58A4D2BC83D75001AFCA8 /* TrashModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrashModel.swift; sourceTree = "<group>"; };
@@ -98,6 +108,7 @@
 				0A178A242BC311720076CE0A /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				0A178A4A2BC311720076CE0A /* FirebaseMLModelDownloader in Frameworks */,
 				0A178A3E2BC311720076CE0A /* FirebaseFirestoreSwift in Frameworks */,
+				0AA301DE2BCBE54F0010679D /* Capture in Frameworks */,
 				0A178A2A2BC311720076CE0A /* FirebaseAppCheck in Frameworks */,
 				0A178A282BC311720076CE0A /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				53F58A552BC9C1DF001AFCA8 /* SDWebImage in Frameworks */,
@@ -143,16 +154,15 @@
 		0A178A112BC30D480076CE0A /* Jina */ = {
 			isa = PBXGroup;
 			children = (
+				0AA301DF2BCBEC000010679D /* Info.plist */,
 				0A178A122BC30D480076CE0A /* JinaApp.swift */,
+				0A830A402BCD04D30013216B /* ImageSize.swift */,
+				53F58A482BC8370F001AFCA8 /* Services */,
 				53F58A572BCA8A1B001AFCA8 /* Screens */,
 				53F58A512BC86B0C001AFCA8 /* Errors.swift */,
 				53F58A562BCA8139001AFCA8 /* Models */,
 				0A6BBEE62BC85F2C004A3431 /* Entering */,
-				53F58A482BC8370F001AFCA8 /* Services */,
-				0A178A6B2BC5B83F0076CE0A /* PostElement.swift */,
-				0A178A652BC4532A0076CE0A /* InputField.swift */,
-				0A178A5F2BC432AF0076CE0A /* MainTitle.swift */,
-				0A178A5D2BC431380076CE0A /* MainButton.swift */,
+				0A830A462BCD26330013216B /* Elements */,
 				0A178A162BC30D4B0076CE0A /* Assets.xcassets */,
 				0A178A572BC3124B0076CE0A /* GoogleService-Info.plist */,
 				0A178A182BC30D4B0076CE0A /* Preview Content */,
@@ -179,6 +189,20 @@
 			path = Entering;
 			sourceTree = "<group>";
 		};
+		0A830A462BCD26330013216B /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				0A830A422BCD243E0013216B /* StatisticsPanel.swift */,
+				0A830A442BCD26160013216B /* Stripe.swift */,
+				0A830A3C2BCCF84D0013216B /* ImagePicker.swift */,
+				0A178A6B2BC5B83F0076CE0A /* PostElement.swift */,
+				0A178A652BC4532A0076CE0A /* InputField.swift */,
+				0A178A5D2BC431380076CE0A /* MainButton.swift */,
+				0A178A5F2BC432AF0076CE0A /* MainTitle.swift */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
 		53F58A482BC8370F001AFCA8 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,9 +226,9 @@
 			isa = PBXGroup;
 			children = (
 				0A178A142BC30D480076CE0A /* ContentView.swift */,
-				0A6BBEE42BC85E30004A3431 /* ProfileScreen.swift */,
 				0A6BBEE02BC6E86A004A3431 /* PostList.swift */,
 				0A6BBEE22BC85310004A3431 /* PostCreationScreen.swift */,
+				0A6BBEE42BC85E30004A3431 /* ProfileScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -254,6 +278,7 @@
 				0A178A532BC311720076CE0A /* FirebaseStorage */,
 				0A178A552BC311720076CE0A /* FirebaseStorageCombine-Community */,
 				53F58A542BC9C1DF001AFCA8 /* SDWebImage */,
+				0AA301DD2BCBE54F0010679D /* Capture */,
 			);
 			productName = Jina;
 			productReference = 0A178A0F2BC30D480076CE0A /* Jina.app */;
@@ -286,6 +311,7 @@
 			packageReferences = (
 				0A178A202BC311720076CE0A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				53F58A532BC9C1DF001AFCA8 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				0AA301DC2BCBE54F0010679D /* XCRemoteSwiftPackageReference "Capture" */,
 			);
 			productRefGroup = 0A178A102BC30D480076CE0A /* Products */;
 			projectDirPath = "";
@@ -317,15 +343,19 @@
 				0A178A5A2BC320E40076CE0A /* AuthService.swift in Sources */,
 				0A178A642BC435720076CE0A /* LoginView.swift in Sources */,
 				0A178A152BC30D480076CE0A /* ContentView.swift in Sources */,
+				0A830A452BCD26160013216B /* Stripe.swift in Sources */,
 				0A6BBEE52BC85E30004A3431 /* ProfileScreen.swift in Sources */,
 				0A178A6C2BC5B83F0076CE0A /* PostElement.swift in Sources */,
 				0A178A682BC592700076CE0A /* RegistrationView.swift in Sources */,
 				0A178A6A2BC5B3A00076CE0A /* EntryType.swift in Sources */,
 				0A178A5C2BC430720076CE0A /* WelcomeScreen.swift in Sources */,
 				53F58A472BC83668001AFCA8 /* DatabaseService.swift in Sources */,
+				0A830A432BCD243E0013216B /* StatisticsPanel.swift in Sources */,
 				0A6BBEE12BC6E86A004A3431 /* PostList.swift in Sources */,
+				0A830A3D2BCCF84D0013216B /* ImagePicker.swift in Sources */,
 				0A178A132BC30D480076CE0A /* JinaApp.swift in Sources */,
 				0A178A5E2BC431380076CE0A /* MainButton.swift in Sources */,
+				0A830A412BCD04D30013216B /* ImageSize.swift in Sources */,
 				0A6BBEE32BC85310004A3431 /* PostCreationScreen.swift in Sources */,
 				53F58A502BC83EF9001AFCA8 /* StorageService.swift in Sources */,
 				0A178A602BC432AF0076CE0A /* MainTitle.swift in Sources */,
@@ -466,9 +496,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Jina/Preview Content\"";
-				DEVELOPMENT_TEAM = 23544X28YJ;
+				DEVELOPMENT_TEAM = SLNT34F22M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Jina/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "My app uses photos for mutating blue frogs";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "To listen how frogs speak";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -479,7 +512,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = PumbaTim.Jina;
+				PRODUCT_BUNDLE_IDENTIFIER = "PumbaTim-Jina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -495,9 +528,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Jina/Preview Content\"";
-				DEVELOPMENT_TEAM = 23544X28YJ;
+				DEVELOPMENT_TEAM = SLNT34F22M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Jina/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "My app uses photos for mutating blue frogs";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "To listen how frogs speak";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -508,7 +544,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = PumbaTim.Jina;
+				PRODUCT_BUNDLE_IDENTIFIER = "PumbaTim-Jina";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -546,6 +582,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 10.23.1;
+			};
+		};
+		0AA301DC2BCBE54F0010679D /* XCRemoteSwiftPackageReference "Capture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/quentinfasquel/Capture.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
 			};
 		};
 		53F58A532BC9C1DF001AFCA8 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
@@ -693,6 +737,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0A178A202BC311720076CE0A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageCombine-Community";
+		};
+		0AA301DD2BCBE54F0010679D /* Capture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AA301DC2BCBE54F0010679D /* XCRemoteSwiftPackageReference "Capture" */;
+			productName = Capture;
 		};
 		53F58A542BC9C1DF001AFCA8 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;

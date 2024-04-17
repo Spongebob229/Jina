@@ -93,7 +93,7 @@ struct RegistrationView: View {
                         try await AuthService.shared.signUpUser(with: email, password: password)
                         
                         let id = AuthService.shared.currentUser?.user.uid
-                        let userModel = UserModel(id: id ?? "", name: name, surname: surname)
+                        let userModel = UserModel(id: id ?? "", trashModelId: "", stars: 0, completed: 0, posted: 0, name: name, surname: surname)
                         
                         try DatabaseService.shared.createUserDocument(user: userModel)
                         

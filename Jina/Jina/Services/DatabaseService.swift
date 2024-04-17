@@ -21,6 +21,10 @@ final class DatabaseService {
     private var itemsCollectionReference: CollectionReference {
         dataBase.collection("trashItems")
     }
+    
+    private var itemsAfterCollectionReference: CollectionReference {
+        dataBase.collection("trashAfterItems")
+    }
 
     private var userId: String? {
         AuthService.shared.user?.uid
@@ -32,6 +36,10 @@ final class DatabaseService {
 
     func createTrashItemDocument(trashItem: TrashModel) throws {
         try itemsCollectionReference.document(trashItem.id).setData(from: trashItem)
+    }
+    
+    func createTrashAfterItemDocument(trashAfterItem: TrashModel) throws {
+        try itemsCollectionReference.document(trashAfterItem.id).setData(from: trashAfterItem)
     }
 
     func getCurrentUserModel() async throws -> UserModel {
@@ -47,12 +55,13 @@ final class DatabaseService {
             .documents.map { try $0.data(as: TrashModel.self) }
     }
 
-    func getUserListModels() async throws -> [TrashModel] {
+    func getUserListModels(id: String) async throws -> TrashModel {
         try await itemsCollectionReference
-            .whereField("responsible", isEqualTo: userId as Any)
-            .getDocuments()
-            .documents.map { try $0.data(as: TrashModel.self) }
+            .document(id)
+            .getDocument(as: TrashModel.self)
     }
+    
+    
 
     func setStatus(for id: String) {
         itemsCollectionReference
@@ -60,11 +69,11 @@ final class DatabaseService {
             .updateData(["status": "inProgress"])
     }
 
-    func setResponsible(for id: String) {
+    func setUserTrashItem(for id: String) {
         guard let userId else { return }
 
-        itemsCollectionReference
-            .document(id)
-            .updateData(["responsible": userId])
+        usersCollectionReference
+            .document(userId)
+            .updateData(["trashModelId": id])
     }
 }

@@ -11,14 +11,18 @@ import Firebase
 struct ContentView: View {
     @State var models = [TrashModel]()
     @State var profileModels = [TrashModel]()
+    @State var userModel: UserModel?
+    @State var selectedTab = 0
+    @State private var trashModel: TrashModel?
 
     var body: some View{
         VStack {
-            TabView {
+            TabView(selection: $selectedTab) {
                 PostList(models: $models)
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }
+                    .tag(0)
                     .onAppear {
                         Task {
                             do {
@@ -28,30 +32,33 @@ struct ContentView: View {
                             }
                         }
                     }
-                PostCreationScreen()
+                PostCreationScreen(selectedTab: $selectedTab)
                     .tabItem {
                         Label("Add", systemImage: "plus.circle")
                     }
-                ProfileScreen(models: $profileModels)
+                    .tag(1)
+                ProfileScreen(userModel: $userModel, trashModel: trashModel)
                     .tabItem {
                         Label("Profile", systemImage: "person.fill")
                     }
+                    .tag(2)
                     .onAppear {
                         Task {
                             do {
-                                profileModels = try await DatabaseService.shared.getUserListModels()
+                                userModel = try await DatabaseService.shared.getCurrentUserModel()
+                                
+                                if let userModel, !userModel.trashModelId.isEmpty {
+                                    trashModel = try await DatabaseService.shared.getUserListModels(id: userModel.trashModelId)
+                                }
                             } catch {
                                 print(error.localizedDescription)
                             }
                         }
                     }
-
             }
 
         }
     }
 }
 
-#Preview {
-    ContentView()
-}
+

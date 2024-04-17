@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "capture",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/quentinfasquel/Capture.git",
+      "state" : {
+        "revision" : "b80317041b1e623ca2f6d14cc4a95c03c6c6a7bf",
+        "version" : "0.2.0"
+      }
+    },
+    {
       "identity" : "firebase-ios-sdk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/firebase-ios-sdk.git",
