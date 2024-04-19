@@ -10,6 +10,7 @@ import SwiftUI
 struct ProfileScreen: View {
     @Binding var userModel: UserModel?
     let trashModel: TrashModel?
+    let email: String = AuthService.shared.user?.email ?? "go fuck yourself"
     
     var body: some View {
         VStack(spacing: 0) {
@@ -26,9 +27,10 @@ struct ProfileScreen: View {
                 .font(.system(size: 25, weight: .semibold))
                 .foregroundStyle(.black)
                 .padding(.bottom, 8)
-            Text("yyytimon@gmail.com")
+            Text("\(email)")
                 .font(.system(size: 16, weight: .semibold))
                 .tint(.gray)
+                .foregroundColor(.gray)
                 .textSelection(.disabled)
                 .padding(.bottom, 24)
             StatisticsPanel(userModel: $userModel)

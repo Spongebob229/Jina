@@ -12,7 +12,6 @@ final class AuthService {
     static let shared = AuthService()
     
     private var auth = Auth.auth()
-    private(set) var currentUser: AuthDataResult?
 
     var user: User? {
         auth.currentUser
@@ -21,11 +20,11 @@ final class AuthService {
     private init() {}
     
     func signUpUser(with email: String, password: String) async throws {
-        currentUser = try await auth.createUser(withEmail: email, password: password)
+        _ = try await auth.createUser(withEmail: email, password: password)
     }
     
     func signInUser(with email: String, password: String) async throws {
-        currentUser = try await auth.signIn(withEmail: email, password: password)
+        _ = try await auth.signIn(withEmail: email, password: password)
     }
 
     func logout() throws {
