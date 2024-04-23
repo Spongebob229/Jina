@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum EntryType {
+enum AuthType {
     case signIn
     case signUp
 }

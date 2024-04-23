@@ -10,9 +10,10 @@ import Foundation
 struct TrashModel: Codable, Identifiable {
     let id: String
     let author: String
-    let image: String
+    let reporter: String
     let address: String
-    let description: String
+    let descriptionBefore: String
+    let descriptionAfter: String
     let status: String
     let stars: Int
 }

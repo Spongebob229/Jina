@@ -9,7 +9,7 @@ import SwiftUI
 
 struct WelcomeScreen: View {
     @State var showBottomSheet = false
-    @State var entryType: EntryType = .signIn
+    @State var entryType: AuthType = .signIn
     @State var showContentView: Bool = false
     
     var body: some View {

@@ -15,7 +15,7 @@ struct RegistrationView: View {
     @State var showingAlert = false
     @State var loginError: Error?
     @Binding var showContentView: Bool
-    @Binding var entryType: EntryType
+    @Binding var entryType: AuthType
     
     var body: some View {
             ScrollView {

@@ -20,11 +20,11 @@ struct StorageService {
         storage.reference()
     }
 
-    func imageURL(for name: String) async throws -> URL {
-        try await imagesReference.child("images/\(name)").downloadURL()
+    func imageURL(for name: String, storage: TrashItemConditions) async throws -> URL {
+        try await imagesReference.child(storage.rawValue + "/" + name).downloadURL()
     }
 
-    func uploadImage(_ imageData: Data, name: String) {
-        imagesReference.child("images/\(name)").putData(imageData)
+    func uploadImage(_ imageData: Data, name: String, to storage: String) {
+        imagesReference.child(storage + "/" + name).putData(imageData)
     }
 }

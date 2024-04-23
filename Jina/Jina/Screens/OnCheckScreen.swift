@@ -1,65 +1,58 @@
 //
-//  PostCreationScreen.swift
+//  OnCheckScreen.swift
 //  Jina
 //
-//  Created by Schannikov Timothy on 11.04.2024.
+//  Created by Schannikov Timothy on 19.04.2024.
 //
 
 import SwiftUI
 import PhotosUI
 import Capture
 
-struct PostCreationScreen: View {
+struct OnCheckScreen: View {
     @State private var trashItem: PhotosPickerItem?
     @State private var trashUIImage = UIImage(systemName: "photo.on.rectangle")
     @State private var pictureHeight: CGFloat = 50.0
     @State private var imageData: Data?
-    @State private var address: String = ""
     @State private var description: String = ""
     @State private var isActionSheetPresented: Bool = false
     @State private var isNeedToShowPhotoPicker: Bool = false
     @State private var showingSheet: Bool = false
-    @State private var showingAlert: Bool = false
     @State private var outputPhoto: UIImage?
     @State private var imageSize: ImageSize = .small
     @FocusState private var isFocused: Bool
-    @Binding var selectedTab: Int
-
+    @Environment(\.presentationMode) var presentationMode
+    let trashModel: TrashModel
     
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                Text("Add your trash")
+                Text("Add details about your work")
                     .font(.system(size: 40, weight: .semibold))
                     .padding(.top, 8)
-                Text("Add photo")
+                Text("Result photo")
                     .font(.system(size: 25))
                 
                 
-                    ZStack {
-                        Image(uiImage: trashUIImage ?? UIImage())
-                            .resizable()
-                            .scaledToFit()
-                            .cornerRadius(8)
-                            .frame(height: pictureHeight)
-                            .padding(.horizontal)
-                    }
-                    .frame(maxWidth: .infinity, minHeight: 200)
-                    .background(Color.textField)
-                    .cornerRadius(8)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(style: StrokeStyle(lineWidth: 2, dash: [10]))
-                            .foregroundColor(Color.blue) // Change the color as needed
-                    )
-                    .onTapGesture {
-                        isActionSheetPresented.toggle()
+                ZStack {
+                    Image(uiImage: trashUIImage ?? UIImage())
+                        .resizable()
+                        .scaledToFit()
+                        .cornerRadius(8)
+                        .frame(height: pictureHeight)
+                        .padding(.horizontal)
                 }
-                
-                Text("Address:")
-                    .font(.system(size: 25))
-                
-                InputField(text: $address, placeholder: "Address")
+                .frame(maxWidth: .infinity, minHeight: 200)
+                .background(Color.textField)
+                .cornerRadius(8)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke(style: StrokeStyle(lineWidth: 2, dash: [10]))
+                        .foregroundColor(Color.blue)
+                )
+                .onTapGesture {
+                    isActionSheetPresented.toggle()
+                }
                 
                 Text("Description:")
                     .font(.system(size: 25))
@@ -71,41 +64,35 @@ struct PostCreationScreen: View {
                         .padding(.leading, 16)
                         .scrollContentBackground(.hidden)
                         .onChange(of: description) { _ in
-                                            if description.last?.isNewline == .some(true) {
-                                                description.removeLast()
-                                                isFocused = false
-                                            }
-                                        }
-                                        .focused($isFocused)
-                                        .submitLabel(.done)
+                            if description.last?.isNewline == .some(true) {
+                                description.removeLast()
+                                isFocused = false
+                            }
+                        }
+                        .focused($isFocused)
+                        .submitLabel(.done)
                 }
                 .frame(height: 100)
                 
-                MainButton(title: "Create order") {
+                MainButton(title: "On check") {
                     guard let imageData else { return }
                     
-                    let id = UUID().uuidString
                     Task {
                         do {
-                            let userModel = try await DatabaseService.shared.getCurrentUserModel()
-                            let trashModel = TrashModel(id: id,
-                                                        author: userModel.name + " " + userModel.surname,
-                                                        reporter: "",
-                                                        address: address,
-                                                        descriptionBefore: description,
-                                                        descriptionAfter: "",
-                                                        status: TrashStatus.open.rawValue,
-                                                        stars: 0)
+                            DatabaseService.shared.setStatus(for: trashModel.id, status: TrashStatus.onReview)
+                            try await DatabaseService.shared.removeTrashItemFromInProgress()
+                            DatabaseService.shared.setDescription(for: trashModel.id, description: description)
                             
-                            StorageService.shared.uploadImage(imageData, name: id, to: TrashItemConditions.before.rawValue)
-                            try DatabaseService.shared.createTrashItemDocument(trashItem: trashModel)
+                            StorageService.shared.uploadImage(imageData,
+                                                              name: trashModel.id,
+                                                              to: TrashItemConditions.after.rawValue)
                             clearScreen()
-                            showingAlert.toggle()
-                            selectedTab = 0
+                            self.presentationMode.wrappedValue.dismiss()
                         } catch {
                             print(error.localizedDescription)
                         }
                     }
+                    
                 }
                 
                 Spacer()
@@ -137,7 +124,7 @@ struct PostCreationScreen: View {
                 else {
                     pictureHeight = 50.0
                 }
-                    
+                
             }
             .confirmationDialog("Select a color", isPresented: $isActionSheetPresented, titleVisibility: .hidden) {
                 Button("Choose from galery") {
@@ -151,22 +138,15 @@ struct PostCreationScreen: View {
             .fullScreenCover(isPresented: $showingSheet) {
                 ImagePicker(uiImage: $trashUIImage, imageSize: $imageSize)
                     .ignoresSafeArea()
+            }
         }
-        }
-        .alert("Your post will appear in main list after moderation :)", isPresented: $showingAlert) {
-            Button("OK", role: .cancel) { }
-        }
-        
-        
     }
-    
     private func clearScreen() {
-        address = ""
         description = ""
         trashUIImage = UIImage(systemName: "photo.on.rectangle")
         imageSize = .small
     }
+    
 }
-
 
 

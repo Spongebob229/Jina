@@ -19,12 +19,13 @@ struct PostList: View {
                         PostElement(model: model, buttonTitle: "Take it") {
                             Task {
                                 let user = try await DatabaseService.shared.getCurrentUserModel()
-                                
+
                                 if !user.trashModelId.isEmpty {
                                     showingAlert.toggle()
                                 } else {
-                                    DatabaseService.shared.setStatus(for: model.id)
-                                    DatabaseService.shared.setUserTrashItem(for: model.id)
+                                    DatabaseService.shared.setStatus(for: model.id, status: .inProgress)
+                                    try DatabaseService.shared.setUserTrashItem(for: model.id)
+                                    try DatabaseService.shared.setReporterForTrashItem(id: model.id)
 
                                     if let index = models.firstIndex(where: { $0.id == model.id }) {
                                         models.remove(at: index)

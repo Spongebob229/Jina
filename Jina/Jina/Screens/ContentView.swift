@@ -9,11 +9,13 @@ import SwiftUI
 import Firebase
 
 struct ContentView: View {
-    @State var models = [TrashModel]()
-    @State var profileModels = [TrashModel]()
-    @State var userModel: UserModel?
-    @State var selectedTab = 0
+    @State private var models = [TrashModel]()
+    @State private var profileModels = [TrashModel]()
+    @State private var onReviewModels = [TrashModel]()
+    @State private var userModel: UserModel?
+    @State private var selectedTab = 0
     @State private var trashModel: TrashModel?
+    @State private var error: Error?
 
     var body: some View{
         VStack {
@@ -26,7 +28,7 @@ struct ContentView: View {
                     .onAppear {
                         Task {
                             do {
-                                models = try await DatabaseService.shared.getMainListItems()
+                                models = try await DatabaseService.shared.getMainList()
                             } catch {
                                 print(error.localizedDescription)
                             }
@@ -37,7 +39,7 @@ struct ContentView: View {
                         Label("Add", systemImage: "plus.circle")
                     }
                     .tag(1)
-                ProfileScreen(userModel: $userModel, trashModel: trashModel)
+                ProfileScreen(error: $error, trashModel: $trashModel, userModel: $userModel)
                     .tabItem {
                         Label("Profile", systemImage: "person.fill")
                     }
@@ -46,12 +48,12 @@ struct ContentView: View {
                         Task {
                             do {
                                 userModel = try await DatabaseService.shared.getCurrentUserModel()
-                                
-                                if let userModel, !userModel.trashModelId.isEmpty {
-                                    trashModel = try await DatabaseService.shared.getUserListModels(id: userModel.trashModelId)
+                                if let userModel {
+                                    trashModel = try await DatabaseService.shared.getCurrentTrash(id: userModel.trashModelId)
                                 }
                             } catch {
-                                print(error.localizedDescription)
+                                self.error = error
+                                trashModel = nil
                             }
                         }
                     }

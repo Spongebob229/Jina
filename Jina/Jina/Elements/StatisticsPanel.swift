@@ -13,7 +13,7 @@ struct StatisticsPanel: View {
         if let userModel {
             HStack (spacing: 0){
                 VStack(alignment: .center, spacing: 0) {
-                    Text("Stars")
+                    Text("Diamonds")
                         .font(.system(size: 15, weight: .semibold))
                         .foregroundStyle(.white)
                         .padding(.bottom, 10)
